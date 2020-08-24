@@ -11,23 +11,22 @@ import org.springframework.stereotype.Repository;
 
 import com.dxctraining.inventorymgt_mvc.exception.PhoneNotFoundException;
 import com.dxctraining.inventorymgt_mvc.phone.entities.Phone;
+import com.dxctraining.inventorymgt_mvc.supplier.entities.Supplier;
 
 @Repository
 public class PhoneDaoImpl implements IPhoneDao {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
-	public Phone add(Phone phone) {
+	public Phone save(Phone phone) {
 		em.persist(phone);
 		return phone;
 	}
 	
-	
-	
 	@Override
-	public Phone save(Phone phone) {
+	public Phone add(Phone phone) {
 		em.persist(phone);
 		return phone;
 	}
@@ -55,4 +54,11 @@ public class PhoneDaoImpl implements IPhoneDao {
       List<Phone>phoneList=query.getResultList();
       return phoneList;
   }
+	
+	@Override
+	public Phone update(Phone phone) {
+		em.merge(phone);
+		return phone;
+
+	}
 }

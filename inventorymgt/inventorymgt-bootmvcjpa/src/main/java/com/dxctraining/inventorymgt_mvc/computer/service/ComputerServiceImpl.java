@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dxctraining.inventorymgt_mvc.computer.dao.IComputerDao;
 import com.dxctraining.inventorymgt_mvc.computer.entities.Computer;
 import com.dxctraining.inventorymgt_mvc.exception.*;
+import com.dxctraining.inventorymgt_mvc.supplier.entities.Supplier;
 
 @Transactional
 @Service
@@ -51,6 +52,16 @@ public class ComputerServiceImpl implements IComputerService {
 		Computer computer = compDao.remove(id);
 		return computer;
 	}
+	
+	@Override
+	public Computer update(Computer computer) {
+		validate(computer);
+		compDao.update(computer);
+		return computer;
+	}
+	
+	
+	
 	@Override
 	public List<Computer> allComputers() {
 		List<Computer> allcomputers = compDao.allComputers();

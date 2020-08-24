@@ -5,9 +5,6 @@ import java.util.List;
 import com.dxctraining.inventorymgt_mvc.phone.entities.Phone;
 
 public interface IPhoneDao {
-	
-
-	Phone add(Phone phone);
 
 	Phone save(Phone phone);
 
@@ -16,4 +13,10 @@ public interface IPhoneDao {
 	Phone remove(int id);
 
 	List<Phone> allPhones();
+	
+	Phone add(Phone phone);
+	
+	Phone update(Phone phone);
+	
+	
 }

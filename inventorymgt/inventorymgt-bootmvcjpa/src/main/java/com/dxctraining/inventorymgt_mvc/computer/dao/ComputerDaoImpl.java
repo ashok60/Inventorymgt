@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dxctraining.inventorymgt_mvc.computer.entities.Computer;
 import com.dxctraining.inventorymgt_mvc.exception.ComputerNotFoundException;
+import com.dxctraining.inventorymgt_mvc.supplier.entities.Supplier;
 
 @Repository
 public class ComputerDaoImpl implements IComputerDao {
@@ -53,5 +54,18 @@ public class ComputerDaoImpl implements IComputerDao {
      List<Computer>computerList=query.getResultList();
      return computerList;
  }
+	
+	@Override
+	public Computer update(Computer computer) {
+		em.merge(computer);
+		return computer;
+
+	}
+	
+	
+	
+	
+	
+	
 
 }

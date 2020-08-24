@@ -1,16 +1,20 @@
 package com.dxctraining.inventorymgt_mvc.controllers;
 
+
+	
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dxctraining.inventorymgt_mvc.computer.dto.CreateComputerRequest;
+import com.dxctraining.inventorymgt_mvc.computer.dto.UpdateComputerRequest;
 import com.dxctraining.inventorymgt_mvc.computer.entities.Computer;
 import com.dxctraining.inventorymgt_mvc.computer.service.IComputerService;
 
@@ -35,6 +39,15 @@ public class ComputerRestController {
 	public Computer getComputer(@PathVariable("id")int id) {
 		Computer computerservice1 = computerservice.findComputerById(id);
 		return computerservice1;
+	}
+	
+	@PutMapping("/update")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public Computer updateComputer(@RequestBody UpdateComputerRequest computer) {
+		Computer computer1 = new Computer(computer.getName(),computer.getDiskSize());
+		computer1.setId(computer.getId());
+		return computerservice.update(computer1);
+	
 	}
 	
 }

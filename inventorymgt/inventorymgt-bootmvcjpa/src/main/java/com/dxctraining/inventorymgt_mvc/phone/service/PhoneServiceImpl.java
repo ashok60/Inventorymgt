@@ -1,5 +1,4 @@
 package com.dxctraining.inventorymgt_mvc.phone.service;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import com.dxctraining.inventorymgt_mvc.exception.*;
 import com.dxctraining.inventorymgt_mvc.item.entities.Item;
 import com.dxctraining.inventorymgt_mvc.phone.dao.IPhoneDao;
 import com.dxctraining.inventorymgt_mvc.phone.entities.Phone;
+import com.dxctraining.inventorymgt_mvc.supplier.entities.Supplier;
 
 @Transactional
 @Service
@@ -39,8 +39,6 @@ public class PhoneServiceImpl implements IPhoneService {
 		return phone;
 	}
 
-	
-
 	@Override
 	public Phone findPhoneById(int id) {
 		validate(id);
@@ -59,5 +57,12 @@ public class PhoneServiceImpl implements IPhoneService {
 	public List<Phone> allPhones() {
 		List<Phone> allphones = phoneDao.allPhones();
 		return allphones;
+	}
+	
+	@Override
+	public Phone update(Phone phone) {
+		validate(phone);
+		phoneDao.update(phone);
+		return phone;
 	}
 }
