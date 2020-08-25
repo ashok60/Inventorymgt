@@ -9,8 +9,6 @@ public class UpdateComputerRequest {
 	private int id;
 	
 
-	
-
 	public int getId() {
 		return id;
 	}
